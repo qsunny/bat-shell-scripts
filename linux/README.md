@@ -43,8 +43,52 @@ sudo nmap -sTU -O 192.168.2.13
 使用 ls 命令，只列出你的 home 文件夹中今天的文件。
 
     ls  -al --time-style=+%D | grep 'date +%D'
+	ls -l --time-style=full-iso
+	ls --full-time
 
 - -a 列出所有文件，包括隐藏文件
 - -l 启用长列表格式
-- --time-style=FORMAT 显示指定 FORMAT 的时间
+- --time-style=FORMAT 显示指定 FORMAT 的时间 FORMAT可以是以下格式:
+- full-iso
+- long-iso
+- iso
+- locale
+- +%H:%M:%S:%D
 - +％D 以 ％m/％d/％y （月/日/年）格式显示或使用日期
+- ls –-format=across
+- ls --format=comma
+- ls --format=horizontal
+- ls --format=long
+- ls --format=single-column
+- ls --format=verbose
+- ls --format=vertical
+- ls --sort=extension
+- ls --sort=size
+- ls --sort=time
+- ls --sort=version
+- ls --sort=none
+- ls --width 80
+
+1. 查找忽略文件名
+- find /home -iname tecmint.txt
+1. 查找目录
+- find / -type d -name Tecmint
+1. 查找所有php文件
+- find . -type f -name "*.php"
+1. 按权限查找
+- find . -type f -perm 0777 -print
+- find / -type f ! -perm 777 (无有777权限)
+- find /tmp -type d -empty
+- find /tmp -type f -empty
+- find . -type f -name "*.txt" -exec rm -f {} \;
+- find / -user root -name tecmint.txt
+- find /home -group developer
+- find / -mtime 50 (修改50天)
+- find / -atime 50 (最近50访问)
+- find / -mtime +50 –mtime -100 (50-100天修改的)
+- find / -cmin -60 (1小时前改变)
+- find / -mmin -60 (1小时前修改)
+- find / -size 50M
+- find / -size +50M -size -100M
+- find / -size +100M -exec rm -rf {} \;
+- ind ./ -size 0 -exec rm {} \; 删除文件大小为零的文件 （还可以以这样做：rm -i `find ./ -size 0`  或 find ./ -size 0 | xargs rm -f &） 
