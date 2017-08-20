@@ -394,10 +394,23 @@ assoc 和 ftype文件关联assoc 设置'文件扩展名'关联，关联到'文�
 保程序能在其它系统上正确运行
 "延缓环境变量扩充"主要用于 if 和 for 的符合语句，在 set 的说明里有其实用例程
 
+- d returns the drive letter 
+- p returns the path
+- s returns the short path
+- x returns the file extension
 
+%~nx0 - the actual name of the batch file, regardless of calling method (some-batch.bat)
+%~dp0 - drive and path to the script (d:\scripts)
+%~dpnx0 - is the fully qualified path name of the script (d:\scripts\some-batch.bat)
 
-
-
+	@echo off
+	echo %0
+	echo %~d0
+	echo %~p0
+	echo %~dp0
+	echo %~x0
+	echo %~s0
+	echo %~sp0
 
 
 
