@@ -92,3 +92,53 @@ sudo nmap -sTU -O 192.168.2.13
 - find / -size +50M -size -100M
 - find / -size +100M -exec rm -rf {} \;
 - ind ./ -size 0 -exec rm {} \; 删除文件大小为零的文件 （还可以以这样做：rm -i `find ./ -size 0`  或 find ./ -size 0 | xargs rm -f &） 
+
+1. $* / $@ 脚本或函数位置参数 $* "$1 $2 ..." , $@ "$1" "$2" ...
+1. $# 传递给脚本或函数参数的个数
+1. $! 最近后台执行的工作线程id
+1. $$ 当前执行batch线程id
+1. $? 最后命令执行的状态
+1. $n 位置参数n=1, 2, 3, ..., 9
+1. ${n} 位置参数类似$n,但n可以大于9
+1. $0 脚本的绝对路径
+1. $_	Last field of the last command
+1. $IFS	Internal field separator
+1. $PATH	PATH environment variable used to look-up executables
+1. $OLDPWD	Previous working directory
+1. $PWD	Present working directory
+1. $FUNCNAME	Array of function names in the execution call stack
+1. $BASH_SOURCE	Array containing source paths for elements in FUNCNAME array. Can be used to get the script path.
+1. $BASH_ALIASES	Associative array containing all currently defined aliases
+1. $BASH_REMATCH	Array of matches from the last regex match
+1. $BASH_VERSION	Bash version string
+1. $BASH_VERSINFO	An array of 6 elements with Bash version information
+1. $BASH	Absolute path to the currently executing Bash shell itself (heuristically determined by bash based on argv[0] and the value of $PATH; may be wrong in corner cases)
+1. $BASH_SUBSHELL	Bash subshell level
+1. $UID	Real (not effective if different) User ID of the process running bash
+1. $PS1	Primary command line prompt;
+1. $PS2	Secondary command line prompt
+1. $RANDOM	A pseudo random integer between 0 and 32767
+1. $LINENO 当前脚本行号
+	 
+
+     # Array in Bash
+1.      array=(1 2 3 4)
+1. 	 array=('first element' 'second element' 'third element')
+2. 	 a=(1 2 3 4)
+
+# foreach loop
+for y in "${a[@]}"; do
+    # act on $y
+    echo "$y"
+done
+
+# classic for-loop
+for ((idx=0; idx < ${#a[@]}; ++idx)); do
+    # act on ${a[$idx]}
+    echo "${a[$idx]}"
+done
+
+for i in "${arr[@]}"; do
+    echo "$i"
+done
+
